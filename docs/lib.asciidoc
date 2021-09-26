@@ -121,6 +121,20 @@ set-face global Search 'black,bright-yellow'
 
 == hide-search
 
+== show-indent-guides
+
+--------------------------------------------------------------------------------
+show-indent-guides
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+set-face global IndentGuidesOdd 'blue,blue+f'
+set-face global IndentGuidesEven 'bright-blue,bright-blue+f'
+set-face global IndentGuidesIncomplete 'red,red+f'
+--------------------------------------------------------------------------------
+
+== hide-indent-guides
+
 == show-palette
 
 --------------------------------------------------------------------------------
