@@ -83,6 +83,14 @@ map -docstring 'enter insert mode with main selection' global normal ^ ':enter-i
 
 enter insert mode with main selection and iterate selections with `Alt+N` and `Alt+P`.
 
+== add-selections-to-register
+
+--------------------------------------------------------------------------------
+map -docstring 'add selections to register (default: ^)' global normal Y ':add-selections-to-register %val{register}<ret>'
+--------------------------------------------------------------------------------
+
+add selections to register (default: `^`).
+
 == select-next-word
 
 --------------------------------------------------------------------------------

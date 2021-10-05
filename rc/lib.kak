@@ -95,6 +95,15 @@ define-command -override enter-insert-mode-with-main-selection -docstring 'enter
   }
 }
 
+define-command -override add-selections-to-register -params 1 -docstring 'add selections to register (default: ^)' %{
+  try %{
+    execute-keys -draft """%arg{1}<a-z>a"
+    execute-keys -save-regs '' """%arg{1}<a-Z>a"
+  } catch %{
+    execute-keys -save-regs '' """%arg{1}Z"
+  }
+}
+
 define-command -override select-next-word -docstring 'select next word' %{
   evaluate-commands -itersel %{
     hook -group select-next-word -always -once window User "%val{selection_desc}" %{
