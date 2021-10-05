@@ -47,10 +47,19 @@ source from `%val{config}`.
 
 == evaluate-selections, =
 
-== execute-keys-with-register
+== evaluate-commands-pure
 
 --------------------------------------------------------------------------------
-execute-keys-with-register p 'Hello, World!'
+evaluate-commands -pure [switches] <commands>
+--------------------------------------------------------------------------------
+
+Example:
+
+--------------------------------------------------------------------------------
+evaluate-commands-pure %{
+  set-register dquote 'Hello, World!'
+  execute-keys p
+}
 --------------------------------------------------------------------------------
 
 == enter-insert-mode-with-main-selection

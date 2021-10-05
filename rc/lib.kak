@@ -46,11 +46,10 @@ define-command -override evaluate-selections -docstring 'evaluate selections' %{
 
 alias global = evaluate-selections
 
-define-command -override execute-keys-with-register -params 2 -docstring 'execute keys with register' %{
-  evaluate-commands -save-regs '"' %{
-    set-register '"' %arg{2}
-    execute-keys '""' %arg{1}
-  }
+# Registers: https://github.com/mawww/kakoune/blob/master/doc/pages/registers.asciidoc
+# Source code: https://github.com/mawww/kakoune/blob/master/src/register_manager.cc
+define-command -override evaluate-commands-pure -params .. -docstring 'evaluate-commands -pure [switches] <commands>' %{
+  evaluate-commands -no-hooks -save-regs '"#%./0123456789:@ABCDEFGHIJKLMNOPQRSTUVWXYZ^_abcdefghijklmnopqrstuvwxyz|' %arg{@}
 }
 
 define-command -override enter-insert-mode-with-main-selection -docstring 'enter insert mode with main selection and iterate selections with Alt+N and Alt+P' %{
@@ -108,7 +107,10 @@ define-command -override reverse-selections -docstring 'reverse selections' %{
 
 define-command -override math -docstring 'math' %{
   prompt math: %{
-    execute-keys-with-register 'a<c-r>"<esc>|bc<ret>' %val{text}
+    evaluate-commands-pure %{
+      set-register t %val{text}
+      execute-keys 'a<c-r>t<esc>|bc<ret>'
+    }
   }
 }
 
