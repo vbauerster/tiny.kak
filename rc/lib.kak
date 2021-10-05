@@ -80,6 +80,8 @@ define-command -override indent-selections -docstring 'indent selections' %{
   try %[ execute-keys -draft -itersel '<a-s>Z)<space><a-x>s^\h+<ret>yz)<a-space>_P' ]
 }
 
+# Reference:
+# https://github.com/mawww/kakoune/blob/master/src/normal.cc#:~:text=enter_insert_mode
 define-command -override enter-insert-mode-with-main-selection -docstring 'enter insert mode with main selection and iterate selections with Alt+N and Alt+P' %{
   execute-keys -save-regs '' '<a-:><a-;>Z<space>i'
 
