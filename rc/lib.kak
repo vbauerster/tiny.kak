@@ -52,6 +52,27 @@ define-command -override evaluate-commands-pure -params .. -docstring 'evaluate-
   evaluate-commands -no-hooks -save-regs '"#%./0123456789:@ABCDEFGHIJKLMNOPQRSTUVWXYZ^_abcdefghijklmnopqrstuvwxyz|' %arg{@}
 }
 
+define-command -override append-text -params .. -docstring 'append-text [values]' %{
+  evaluate-commands -save-regs '"' %{
+    set-register dquote %arg{@}
+    execute-keys '<a-p>'
+  }
+}
+
+define-command -override insert-text -params .. -docstring 'insert-text [values]' %{
+  evaluate-commands -save-regs '"' %{
+    set-register dquote %arg{@}
+    execute-keys '<a-P>'
+  }
+}
+
+define-command -override replace-text -params .. -docstring 'replace-text [values]' %{
+  evaluate-commands -save-regs '"' %{
+    set-register dquote %arg{@}
+    execute-keys 'R'
+  }
+}
+
 define-command -override enter-insert-mode-with-main-selection -docstring 'enter insert mode with main selection and iterate selections with Alt+N and Alt+P' %{
   execute-keys -save-regs '' '<a-:><a-;>Z<space>i'
 
