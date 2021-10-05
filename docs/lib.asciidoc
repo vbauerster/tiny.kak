@@ -71,6 +71,10 @@ insert-text 'Hello, World!'
 replace-text 'Hello, World!'
 --------------------------------------------------------------------------------
 
+== indent-selections
+
+replace leading tabs with the appropriate indent and align everything with the current line.
+
 == enter-insert-mode-with-main-selection
 
 --------------------------------------------------------------------------------

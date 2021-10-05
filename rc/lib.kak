@@ -73,6 +73,13 @@ define-command -override replace-text -params .. -docstring 'replace-text [value
   }
 }
 
+define-command -override indent-selections -docstring 'indent selections' %{
+  # Replace leading tabs with the appropriate indent.
+  try %[ execute-keys -draft "<a-s>s\A\t+<ret>s.<ret>%opt{indentwidth}@" ]
+  # Align everything with the current line.
+  try %[ execute-keys -draft -itersel '<a-s>Z)<space><a-x>s^\h+<ret>yz)<a-space>_P' ]
+}
+
 define-command -override enter-insert-mode-with-main-selection -docstring 'enter insert mode with main selection and iterate selections with Alt+N and Alt+P' %{
   execute-keys -save-regs '' '<a-:><a-;>Z<space>i'
 
