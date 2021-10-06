@@ -104,12 +104,12 @@ define-command -override add-selections-to-register -params 1 -docstring 'add se
   }
 }
 
+declare-option -hidden str register_name
+
 define-command -override clear-register -params 1 -docstring 'clear register (default: ^)' %{
-  try %{
-    set-register %arg{1}
-  } catch %{
-    set-register '^'
-  }
+  set-option global register_name %sh{printf '%s' "${kak_register:-^}"}
+  set-register %opt{register_name}
+  echo -markup "{Information}cleared register '%opt{register_name}'{Default}"
 }
 
 define-command -override select-next-word -docstring 'select next word' %{
