@@ -104,6 +104,14 @@ define-command -override add-selections-to-register -params 1 -docstring 'add se
   }
 }
 
+define-command -override clear-register -params 1 -docstring 'clear register (default: ^)' %{
+  try %{
+    set-register %arg{1}
+  } catch %{
+    set-register '^'
+  }
+}
+
 define-command -override select-next-word -docstring 'select next word' %{
   evaluate-commands -itersel %{
     hook -group select-next-word -always -once window User "%val{selection_desc}" %{

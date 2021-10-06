@@ -91,6 +91,14 @@ map -docstring 'add selections to register (default: ^)' global normal Y ':add-s
 
 add selections to register (default: `^`).
 
+== clear-register
+
+--------------------------------------------------------------------------------
+map -docstring 'clear register (default: ^)' global normal D ':clear-register %val{register}<ret>'
+--------------------------------------------------------------------------------
+
+clear register (default: `^`).
+
 == select-next-word
 
 --------------------------------------------------------------------------------
