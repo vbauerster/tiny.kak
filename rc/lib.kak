@@ -111,12 +111,11 @@ define-command -override iterate-previous-selection -params 1 -docstring 'iterat
 }
 
 define-command -override add-selections-to-register -params 1 -docstring 'add selections to register (default: ^)' %{
-  try %{
-    execute-keys -draft """%arg{1}<a-z>a"
-    execute-keys -with-hooks -save-regs '' """%arg{1}<a-Z>a"
-  } catch %{
+  evaluate-commands -draft %{
+    try %[ execute-keys """%arg{1}<a-z>a" ]
     execute-keys -with-hooks -save-regs '' """%arg{1}Z"
   }
+  execute-keys """%arg{1}Z"
 }
 
 declare-option -hidden str register_name
