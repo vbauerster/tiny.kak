@@ -83,11 +83,17 @@ map -docstring 'enter insert mode with main selection' global normal ^ ':enter-i
 
 enter insert mode with main selection and iterate selections with `Alt+N` and `Alt+P`.
 
+== consume-selections
+
 == consume-main-selection
 
 == iterate-next-selection
 
 == iterate-previous-selection
+
+== save-selections-to-register
+
+== restore-selections-from-register
 
 == add-selections-to-register
 

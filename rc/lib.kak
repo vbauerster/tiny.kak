@@ -95,26 +95,45 @@ define-command -override enter-insert-mode-with-main-selection -docstring 'enter
   }
 }
 
+define-command -override consume-selections -params 1..2 -docstring 'consume selections (default: ^)' %{
+  restore-selections-from-register %arg{1}
+  evaluate-commands %arg{2}
+  save-selections-to-register %arg{1}
+  execute-keys '<space>'
+}
+
 define-command -override consume-main-selection -params 1 -docstring 'consume main selection (default: ^)' %{
-  try %[ execute-keys """%arg{1}<a-z>a" ]
-  execute-keys -with-hooks -save-regs '' "<a-space>""%arg{1}Z<space>"
+  consume-selections %arg{1} %{
+    execute-keys '<a-space>'
+  }
 }
 
 define-command -override iterate-next-selection -params 1 -docstring 'iterate next selection (default: ^)' %{
-  try %[ execute-keys """%arg{1}<a-z>a" ]
-  execute-keys -with-hooks -save-regs '' ")""%arg{1}Z<space>"
+  consume-selections %arg{1} %{
+    execute-keys ')'
+  }
 }
 
 define-command -override iterate-previous-selection -params 1 -docstring 'iterate previous selection (default: ^)' %{
+  consume-selections %arg{1} %{
+    execute-keys '('
+  }
+}
+
+define-command -override save-selections-to-register -params 1 -docstring 'save selections to register (default: ^)' %{
+  execute-keys -with-hooks -save-regs '' """%arg{1}Z"
+}
+
+define-command -override restore-selections-from-register -params 1 -docstring 'restore selections from register (default: ^)' %{
   try %[ execute-keys """%arg{1}<a-z>a" ]
-  execute-keys -with-hooks -save-regs '' "(""%arg{1}Z<space>"
 }
 
 define-command -override add-selections-to-register -params 1 -docstring 'add selections to register (default: ^)' %{
   evaluate-commands -draft %{
-    try %[ execute-keys """%arg{1}<a-z>a" ]
-    execute-keys -with-hooks -save-regs '' """%arg{1}Z"
+    restore-selections-from-register %arg{1}
+    save-selections-to-register %arg{1}
   }
+  # Display message:
   execute-keys """%arg{1}Z"
 }
 
