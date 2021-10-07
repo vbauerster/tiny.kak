@@ -204,6 +204,34 @@ define-command -override hide-search -docstring 'hide search' %{
   remove-highlighter global/search
 }
 
+declare-option -hidden range-specs mark_ranges
+
+set-face global Mark 'black,bright-green+F'
+
+define-command -override -hidden update-mark-ranges -docstring 'update mark ranges' %{
+  evaluate-commands -buffer '*' unset-option buffer mark_ranges
+  try %{
+    evaluate-commands -draft %{
+      execute-keys 'z'
+      set-option buffer mark_ranges %val{timestamp}
+      evaluate-commands -itersel %{
+        set-option -add buffer mark_ranges "%val{selection_desc}|Mark"
+      }
+    }
+  }
+}
+
+define-command -override show-marks -docstring 'show marks' %{
+  remove-hooks global show-marks
+  add-highlighter -override global/marks ranges mark_ranges
+  hook -group show-marks global RegisterModified '\^' update-mark-ranges
+}
+
+define-command -override hide-marks -docstring 'hide marks' %{
+  remove-hooks global show-marks
+  remove-highlighter global/marks
+}
+
 # Indent guides
 # Show indentation guides.
 # Reference: https://code.visualstudio.com/docs/getstarted/userinterface#_indent-guides
