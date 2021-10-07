@@ -95,6 +95,21 @@ define-command -override enter-insert-mode-with-main-selection -docstring 'enter
   }
 }
 
+define-command -override consume-main-selection -params 1 -docstring 'consume main selection (default: ^)' %{
+  try %[ execute-keys """%arg{1}<a-z>a" ]
+  execute-keys -with-hooks -save-regs '' "<a-space>""%arg{1}Z<space>"
+}
+
+define-command -override iterate-next-selection -params 1 -docstring 'iterate next selection (default: ^)' %{
+  try %[ execute-keys """%arg{1}<a-z>a" ]
+  execute-keys -with-hooks -save-regs '' ")""%arg{1}Z<space>"
+}
+
+define-command -override iterate-previous-selection -params 1 -docstring 'iterate previous selection (default: ^)' %{
+  try %[ execute-keys """%arg{1}<a-z>a" ]
+  execute-keys -with-hooks -save-regs '' "(""%arg{1}Z<space>"
+}
+
 define-command -override add-selections-to-register -params 1 -docstring 'add selections to register (default: ^)' %{
   try %{
     execute-keys -draft """%arg{1}<a-z>a"
