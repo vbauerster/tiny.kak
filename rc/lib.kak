@@ -212,17 +212,22 @@ set-face global MarkedPrimaryCursor 'black,magenta+fg'
 set-face global MarkedSecondaryCursor 'black,blue+fg'
 
 define-command -override -hidden update-mark-ranges -docstring 'update mark ranges' %{
+  # Reset ranges
   evaluate-commands -buffer '*' unset-option buffer mark_ranges
   try %{
     evaluate-commands -draft %{
+      # Jump to the buffer
       execute-keys 'z'
+      # Initialize ranges
       set-option buffer mark_ranges %val{timestamp}
+      # Mark the main selection
       evaluate-commands -draft %{
         execute-keys '<space>'
         set-option -add buffer mark_ranges "%val{selection_desc}|MarkedPrimarySelection"
         execute-keys ';'
         set-option -add buffer mark_ranges "%val{selection_desc}|MarkedPrimaryCursor"
       }
+      # Mark other selections
       execute-keys '<a-space>'
       evaluate-commands -draft -itersel %{
         set-option -add buffer mark_ranges "%val{selection_desc}|MarkedSecondarySelection"
