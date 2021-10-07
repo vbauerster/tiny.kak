@@ -98,9 +98,9 @@ define-command -override enter-insert-mode-with-main-selection -docstring 'enter
 define-command -override add-selections-to-register -params 1 -docstring 'add selections to register (default: ^)' %{
   try %{
     execute-keys -draft """%arg{1}<a-z>a"
-    execute-keys -save-regs '' """%arg{1}<a-Z>a"
+    execute-keys -with-hooks -save-regs '' """%arg{1}<a-Z>a"
   } catch %{
-    execute-keys -save-regs '' """%arg{1}Z"
+    execute-keys -with-hooks -save-regs '' """%arg{1}Z"
   }
 }
 
