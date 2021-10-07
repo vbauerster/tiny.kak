@@ -166,7 +166,10 @@ show-marks
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
-set-face global Mark 'black,bright-green+F'
+set-face global MarkedPrimarySelection 'black,bright-magenta+fg'
+set-face global MarkedSecondarySelection 'black,bright-blue+fg'
+set-face global MarkedPrimaryCursor 'black,magenta+fg'
+set-face global MarkedSecondaryCursor 'black,blue+fg'
 --------------------------------------------------------------------------------
 
 == hide-marks

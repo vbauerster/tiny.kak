@@ -206,7 +206,10 @@ define-command -override hide-search -docstring 'hide search' %{
 
 declare-option -hidden range-specs mark_ranges
 
-set-face global Mark 'black,bright-green+F'
+set-face global MarkedPrimarySelection 'black,bright-magenta+fg'
+set-face global MarkedSecondarySelection 'black,bright-blue+fg'
+set-face global MarkedPrimaryCursor 'black,magenta+fg'
+set-face global MarkedSecondaryCursor 'black,blue+fg'
 
 define-command -override -hidden update-mark-ranges -docstring 'update mark ranges' %{
   evaluate-commands -buffer '*' unset-option buffer mark_ranges
@@ -214,8 +217,17 @@ define-command -override -hidden update-mark-ranges -docstring 'update mark rang
     evaluate-commands -draft %{
       execute-keys 'z'
       set-option buffer mark_ranges %val{timestamp}
-      evaluate-commands -itersel %{
-        set-option -add buffer mark_ranges "%val{selection_desc}|Mark"
+      evaluate-commands -draft %{
+        execute-keys '<space>'
+        set-option -add buffer mark_ranges "%val{selection_desc}|MarkedPrimarySelection"
+        execute-keys ';'
+        set-option -add buffer mark_ranges "%val{selection_desc}|MarkedPrimaryCursor"
+      }
+      execute-keys '<a-space>'
+      evaluate-commands -draft -itersel %{
+        set-option -add buffer mark_ranges "%val{selection_desc}|MarkedSecondarySelection"
+        execute-keys ';'
+        set-option -add buffer mark_ranges "%val{selection_desc}|MarkedSecondaryCursor"
       }
     }
   }
