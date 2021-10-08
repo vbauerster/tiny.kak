@@ -83,30 +83,6 @@ map -docstring 'enter insert mode with main selection' global normal ^ ':enter-i
 
 enter insert mode with main selection and iterate selections with `Alt+N` and `Alt+P`.
 
-== consume-selections
-
-== consume-main-selection
-
-== iterate-next-selection
-
-== iterate-previous-selection
-
-== save-selections-to-register
-
-== restore-selections-from-register
-
-== add-selections-to-register
-
-== clear-register
-
---------------------------------------------------------------------------------
-map -docstring 'iterate previous selection (default: ^)' global normal '<left>' ':iterate-previous-selection %val{register}<ret>'
-map -docstring 'iterate next selection (default: ^)' global normal '<right>' ':iterate-next-selection %val{register}<ret>'
-map -docstring 'consume main selection (default: ^)' global normal '<s-right>' ':consume-main-selection %val{register}<ret>'
-map -docstring 'add selections to register (default: ^)' global normal Y ':add-selections-to-register %val{register}<ret>'
-map -docstring 'clear register (default: ^)' global normal D ':clear-register %val{register}<ret>'
---------------------------------------------------------------------------------
-
 == select-next-word
 
 --------------------------------------------------------------------------------
@@ -154,21 +130,6 @@ set-face global SelectedText 'default,bright-black'
 --------------------------------------------------------------------------------
 
 == hide-selected-text
-
-== show-marks
-
---------------------------------------------------------------------------------
-show-marks
---------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------
-set-face global MarkedPrimarySelection 'black,bright-magenta+fg'
-set-face global MarkedSecondarySelection 'black,bright-blue+fg'
-set-face global MarkedPrimaryCursor 'black,magenta+fg'
-set-face global MarkedSecondaryCursor 'black,blue+fg'
---------------------------------------------------------------------------------
-
-== hide-marks
 
 == show-indent-guides
 
