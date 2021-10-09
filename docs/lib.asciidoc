@@ -94,39 +94,6 @@ set-face global SelectedText 'default,bright-black'
 map -docstring 'show palette' global view p '<esc>:show-palette<ret>'
 --------------------------------------------------------------------------------
 
-== set-indent
-
---------------------------------------------------------------------------------
-set-indent global 2
---------------------------------------------------------------------------------
-
-set indent in `scope` to `width`.
-
-== enable-detect-indent
-
---------------------------------------------------------------------------------
-enable-detect-indent
---------------------------------------------------------------------------------
-
-automatically set indent level from buffer content.
-
-== disable-detect-indent
-
-== detect-indent
-
-set indent level from buffer content.
-
-== enable-auto-indent
-
---------------------------------------------------------------------------------
-set-option global disabled_hooks '(?!auto)(?!detect)\K(.+)-(trim-indent|insert|indent)'
-enable-auto-indent
-map -docstring 'indent' global insert <tab> '<a-;><a-gt>'
-map -docstring 'deindent' global insert <s-tab> '<a-;><lt>'
---------------------------------------------------------------------------------
-
-== disable-auto-indent
-
 == make-directory-on-save
 
 --------------------------------------------------------------------------------
