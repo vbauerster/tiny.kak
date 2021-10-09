@@ -1,12 +1,3 @@
-declare-option str cursor_character_unicode
-
-define-command -override add-cursor-character-unicode-expansion -docstring 'add %opt{cursor_character_unicode} expansion' %{
-  remove-hooks global update-cursor-character-unicode-expansion
-  hook -group update-cursor-character-unicode-expansion global NormalIdle '' %{
-    set-option window cursor_character_unicode %sh{printf '%04x' "$kak_cursor_char_value"}
-  }
-}
-
 define-command -override delete-scratch-message -docstring 'delete scratch message' %{
   remove-hooks global delete-scratch-message
   hook -group delete-scratch-message global BufCreate '\*scratch\*' %{

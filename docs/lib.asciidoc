@@ -1,14 +1,5 @@
 = Library
 
-== add-cursor-character-unicode-expansion
-
---------------------------------------------------------------------------------
-add-cursor-character-unicode-expansion
-set-option global modelinefmt '%opt{cursor_character_unicode}'
---------------------------------------------------------------------------------
-
-add `%opt{cursor_character_unicode}` expansion.
-
 == delete-scratch-message
 
 --------------------------------------------------------------------------------
