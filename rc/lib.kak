@@ -113,31 +113,6 @@ define-command -override -hidden update-selected-text-highlighter -docstring 'up
   }
 }
 
-# Indent guides
-# Show indentation guides.
-# Reference: https://code.visualstudio.com/docs/getstarted/userinterface#_indent-guides
-
-# Faces
-set-face global IndentGuidesOdd 'blue,blue+f'
-set-face global IndentGuidesEven 'bright-blue,bright-blue+f'
-set-face global IndentGuidesIncomplete 'red,red+f'
-
-# Highlighters
-add-highlighter -override shared/indent-guides regions
-add-highlighter -override shared/indent-guides/region region '^' '(?=\H)' group
-add-highlighter -override shared/indent-guides/region/incomplete fill IndentGuidesIncomplete
-add-highlighter -override shared/indent-guides/region/odd dynregex '\h{%opt{indentwidth}}' '0:IndentGuidesOdd'
-add-highlighter -override shared/indent-guides/region/even dynregex '\h{%opt{indentwidth}}\K\h{%opt{indentwidth}}' '0:IndentGuidesEven'
-
-# Commands
-define-command -override show-indent-guides -docstring 'show indent guides' %{
-  add-highlighter -override global/indent-guides ref indent-guides
-}
-
-define-command -override hide-indent-guides -docstring 'hide indent guides' %{
-  remove-highlighter global/indent-guides
-}
-
 declare-option -hidden str-list palette
 
 define-command -override show-palette -docstring 'show palette' %{
