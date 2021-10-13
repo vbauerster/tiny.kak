@@ -88,7 +88,7 @@ define-command -override math -docstring 'math' %{
   }
 }
 
-set-face global SelectedText 'default,bright-black'
+set-face global SelectedText 'bright-white,bright-black+fg'
 
 define-command -override show-selected-text -docstring 'show selected text' %{
   remove-hooks global show-selected-text

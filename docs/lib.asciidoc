@@ -83,7 +83,7 @@ show-selected-text
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
-set-face global SelectedText 'default,bright-black'
+set-face global SelectedText 'bright-white,bright-black+fg'
 --------------------------------------------------------------------------------
 
 == hide-selected-text
