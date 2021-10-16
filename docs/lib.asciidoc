@@ -1,5 +1,18 @@
 = Library
 
+== add-cursor-character-unicode-expansion
+
+Show Unicode value in the status line.
+
+Run `add-cursor-character-unicode-expansion` and add `%opt{cursor_character_unicode}` expansion to your status line.
+
+--------------------------------------------------------------------------------
+add-cursor-character-unicode-expansion
+set-option global modelinefmt '%opt{cursor_character_unicode}'
+--------------------------------------------------------------------------------
+
+add `%opt{cursor_character_unicode}` expansion.
+
 == delete-scratch-message
 
 --------------------------------------------------------------------------------
