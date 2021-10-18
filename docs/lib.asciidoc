@@ -98,7 +98,7 @@ show-selected-text
 Blue (alpha-blended) face:
 
 --------------------------------------------------------------------------------
-set-face global SelectedText "default,rgba:%opt{blue}%opt{selection_alpha}"
+set-face global SelectedText "default,rgba:%opt{blue}%opt{selection_alpha}" # Blue (alpha-blended)
 --------------------------------------------------------------------------------
 
 == hide-selected-text
