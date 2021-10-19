@@ -95,10 +95,10 @@ map -docstring 'math' global normal = ':math<ret>'
 show-selected-text
 --------------------------------------------------------------------------------
 
-Blue (alpha-blended) face:
+White (alpha-blended) face:
 
 --------------------------------------------------------------------------------
-set-face global SelectedText "default,rgba:%opt{blue}%opt{selection_alpha}" # Blue (alpha-blended)
+set-face global SelectedText "default,rgba:%opt{white}%opt{selection_alpha}" # White (alpha-blended)
 --------------------------------------------------------------------------------
 
 == hide-selected-text
