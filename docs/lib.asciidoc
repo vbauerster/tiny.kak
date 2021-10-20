@@ -83,12 +83,6 @@ replace leading tabs with the appropriate indent and align everything with the c
 
 == reverse-selections
 
-== math
-
---------------------------------------------------------------------------------
-map -docstring 'math' global normal = ':math<ret>'
---------------------------------------------------------------------------------
-
 == show-selected-text
 
 --------------------------------------------------------------------------------

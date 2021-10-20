@@ -89,15 +89,6 @@ define-command -override reverse-selections -docstring 'reverse selections' %{
   connect run kcr pipe jq reverse
 }
 
-define-command -override math -docstring 'math' %{
-  prompt math: %{
-    evaluate-commands-pure %{
-      set-register t %val{text}
-      execute-keys 'a<c-r>t<esc>|bc<ret>'
-    }
-  }
-}
-
 set-face global SelectedText 'bright-white,bright-black'
 
 define-command -override show-selected-text -docstring 'show selected text' %{
