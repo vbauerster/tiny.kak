@@ -22,7 +22,7 @@ delete-scratch-message
 == find, f
 
 --------------------------------------------------------------------------------
-map -docstring 'open file' global normal <c-f> ':find<space>'
+map -docstring 'open file' global normal <c-f> ': find<space>'
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ replace leading tabs with the appropriate indent and align everything with the c
 == show-palette
 
 --------------------------------------------------------------------------------
-map -docstring 'show palette' global view p '<esc>:show-palette<ret>'
+map -docstring 'show palette' global view p '<esc>: show-palette<ret>'
 --------------------------------------------------------------------------------
 
 == make-directory-on-save
