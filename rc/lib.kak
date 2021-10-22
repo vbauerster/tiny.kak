@@ -1,7 +1,6 @@
 # Show Unicode value in the status line.
-declare-option str cursor_character_unicode
-
-define-command -override add-cursor-character-unicode-expansion -docstring 'add %opt{cursor_character_unicode} expansion' %{
+define-command -override declare-cursor-character-unicode-expansion -docstring 'declare %opt{cursor_character_unicode} expansion' %{
+  declare-option str cursor_character_unicode
   remove-hooks global update-cursor-character-unicode-expansion
   hook -group update-cursor-character-unicode-expansion global NormalIdle '' %{
     set-option window cursor_character_unicode %sh{printf '%04x' "$kak_cursor_char_value"}
