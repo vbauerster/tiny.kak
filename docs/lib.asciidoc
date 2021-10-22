@@ -83,20 +83,6 @@ replace leading tabs with the appropriate indent and align everything with the c
 
 == reverse-selections
 
-== show-selected-text
-
---------------------------------------------------------------------------------
-show-selected-text
---------------------------------------------------------------------------------
-
-Blue (alpha-blended) face:
-
---------------------------------------------------------------------------------
-set-face global SelectedText "default,rgba:%opt{blue}%opt{selection_alpha}" # Blue (alpha-blended)
---------------------------------------------------------------------------------
-
-== hide-selected-text
-
 == show-palette
 
 --------------------------------------------------------------------------------

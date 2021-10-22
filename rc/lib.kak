@@ -89,31 +89,6 @@ define-command -override reverse-selections -docstring 'reverse selections' %{
   connect run kcr pipe jq reverse
 }
 
-set-face global SelectedText 'bright-white,bright-black'
-
-define-command -override show-selected-text -docstring 'show selected text' %{
-  remove-hooks global show-selected-text
-  hook -group show-selected-text global NormalIdle '' update-selected-text-highlighter
-  hook -group show-selected-text global InsertIdle '' update-selected-text-highlighter
-}
-
-define-command -override hide-selected-text -docstring 'hide selected text' %{
-  remove-hooks global show-selected-text
-  remove-highlighter global/selected-text
-}
-
-define-command -override -hidden update-selected-text-highlighter -docstring 'update selected text highlighter' %{
-  evaluate-commands -draft -save-regs '/' %{
-    try %{
-      execute-keys '<a-k>..<ret>'
-      execute-keys -save-regs '' '*'
-      add-highlighter -override global/selected-text regex "%reg{/}" 0:SelectedText
-    } catch %{
-      remove-highlighter global/selected-text
-    }
-  }
-}
-
 declare-option -hidden str-list palette
 
 define-command -override show-palette -docstring 'show palette' %{
