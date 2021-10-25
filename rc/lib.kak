@@ -7,10 +7,15 @@ define-command -override declare-cursor-character-unicode-expansion -docstring '
   }
 }
 
-define-command -override delete-scratch-message -docstring 'delete scratch message' %{
-  remove-hooks global delete-scratch-message
-  hook -group delete-scratch-message global BufCreate '\*scratch\*' %{
+define-command -override remove-scratch-message -docstring 'remove scratch message' %{
+  remove-hooks global remove-scratch-message
+  hook -group remove-scratch-message global BufCreate '\*scratch\*' %{
     execute-keys '%d'
+    hook -always -once buffer NormalIdle '' %{
+      rename-buffer /dev/null
+      edit -scratch '*scratch*'
+      delete-buffer /dev/null
+    }
   }
 }
 

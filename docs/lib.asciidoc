@@ -9,10 +9,10 @@ declare-cursor-character-unicode-expansion
 set-option global modelinefmt 'U+%opt{cursor_character_unicode}'
 --------------------------------------------------------------------------------
 
-== delete-scratch-message
+== remove-scratch-message
 
 --------------------------------------------------------------------------------
-delete-scratch-message
+remove-scratch-message
 --------------------------------------------------------------------------------
 
 == find, f
