@@ -128,14 +128,3 @@ define-command -override synchronize-clipboard -docstring 'synchronize clipboard
     }
   }
 }
-
-define-command -override synchronize-buffer-directory-name-with-register -params 1 -docstring 'synchronize buffer directory name with register' %{
-  remove-hooks global "synchronize-buffer-directory-name-with-register-%arg{1}"
-  hook -group "synchronize-buffer-directory-name-with-register-%arg{1}" global WinDisplay '.*' "
-    save-directory-name-to-register %%val{hook_param} %arg{1}
-  "
-}
-
-define-command -override -hidden save-directory-name-to-register -params 2 -docstring 'save-directory-name-to-register <path> <register>: save directory name to register' %{
-  set-register %arg{2} %sh{printf '%s/' "${1%/*}"}
-}
