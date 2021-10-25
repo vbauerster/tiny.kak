@@ -45,8 +45,6 @@ source-config colors/dracula.kak
 
 source from `%val{config}`.
 
-== evaluate-selections, =
-
 == evaluate-commands-pure
 
 --------------------------------------------------------------------------------

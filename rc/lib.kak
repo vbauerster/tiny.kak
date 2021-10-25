@@ -38,14 +38,6 @@ define-command -override source-config -menu -params 1 -shell-script-candidates 
   source "%val{config}/%arg{1}"
 }
 
-define-command -override evaluate-selections -docstring 'evaluate selections' %{
-  evaluate-commands -itersel %{
-    evaluate-commands %val{selection}
-  }
-}
-
-alias global = evaluate-selections
-
 # Registers: https://github.com/mawww/kakoune/blob/master/doc/pages/registers.asciidoc
 # Source code: https://github.com/mawww/kakoune/blob/master/src/register_manager.cc
 define-command -override evaluate-commands-pure -params .. -docstring 'evaluate-commands -pure [switches] <commands>' %{
