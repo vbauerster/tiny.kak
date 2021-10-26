@@ -19,14 +19,6 @@ define-command -override remove-scratch-message -docstring 'remove scratch messa
   }
 }
 
-declare-option -docstring 'find command' str find_command 'fd --type file'
-
-define-command -override find -menu -params 1 -shell-script-candidates %opt{find_command} -docstring 'open file' %{
-  edit %arg{1}
-}
-
-alias global f find
-
 define-command -override open-kakrc -docstring 'open kakrc' %{
   edit "%val{config}/kakrc"
 }
