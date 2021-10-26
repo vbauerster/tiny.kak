@@ -35,12 +35,6 @@ define-command -override source-config -menu -params 1 -shell-script-candidates 
   source "%val{config}/%arg{1}"
 }
 
-# Registers: https://github.com/mawww/kakoune/blob/master/doc/pages/registers.asciidoc
-# Source code: https://github.com/mawww/kakoune/blob/master/src/register_manager.cc
-define-command -override evaluate-commands-pure -params .. -docstring 'evaluate-commands -pure [switches] <commands>' %{
-  evaluate-commands -no-hooks -save-regs '"#%./0123456789:@ABCDEFGHIJKLMNOPQRSTUVWXYZ^_abcdefghijklmnopqrstuvwxyz|' %arg{@}
-}
-
 define-command -override append-text -params .. -docstring 'append-text [values]' %{
   evaluate-commands -save-regs '"' %{
     set-register dquote %arg{@}
