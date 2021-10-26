@@ -13,7 +13,7 @@ define-command -override remove-scratch-message -docstring 'remove scratch messa
     execute-keys '%d'
     hook -always -once buffer NormalIdle '' %{
       rename-buffer /dev/null
-      edit -scratch '*scratch*'
+      evaluate-commands -no-hooks -- edit -scratch '*scratch*'
       delete-buffer /dev/null
     }
   }
