@@ -59,14 +59,6 @@ define-command -override indent-selections -docstring 'indent selections' %{
   try %[ execute-keys -draft -itersel '<a-s>Z)<space><a-x>s^\h+<ret>yz)<a-space>_P' ]
 }
 
-define-command -override sort-selections -docstring 'sort selections' %{
-  connect run kcr pipe jq sort
-}
-
-define-command -override reverse-selections -docstring 'reverse selections' %{
-  connect run kcr pipe jq reverse
-}
-
 define-command -override make-directory-on-save -docstring 'make directory on save' %{
   remove-hooks global make-directory-on-save
   hook -group make-directory-on-save global BufWritePre '.*' %{
