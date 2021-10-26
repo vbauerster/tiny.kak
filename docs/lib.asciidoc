@@ -67,8 +67,8 @@ replace leading tabs with the appropriate indent and align everything with the c
 make-directory-on-save
 --------------------------------------------------------------------------------
 
-== synchronize-clipboard
+== synchronize-terminal-clipboard
 
 --------------------------------------------------------------------------------
-synchronize-clipboard
+synchronize-terminal-clipboard
 --------------------------------------------------------------------------------

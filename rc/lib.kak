@@ -83,9 +83,9 @@ define-command -override make-directory-on-save -docstring 'make directory on sa
 }
 
 # Documentation: https://xfree86.org/current/ctlseqs.html#:~:text=clipboard
-define-command -override synchronize-clipboard -docstring 'synchronize clipboard' %{
-  remove-hooks global synchronize-clipboard
-  hook -group synchronize-clipboard global RegisterModified '"' %{
+define-command -override synchronize-terminal-clipboard -docstring 'synchronize terminal clipboard' %{
+  remove-hooks global synchronize-terminal-clipboard
+  hook -group synchronize-terminal-clipboard global RegisterModified '"' %{
     nop %sh{
       encoded_selection_data=$(printf '%s' "$kak_main_reg_dquote" | base64)
       printf '\033]52;c;%s\a' "$encoded_selection_data" > /dev/tty
