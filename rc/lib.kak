@@ -36,17 +36,13 @@ define-command -override source-config -menu -params 1 -shell-script-candidates 
 }
 
 define-command -override append-text -params .. -docstring 'append-text [values]' %{
-  evaluate-commands -save-regs '"' %{
-    set-register dquote %arg{@}
-    execute-keys '<a-p>'
-  }
+  execute-keys 'aX<esc>;'
+  replace-text %arg{@}
 }
 
 define-command -override insert-text -params .. -docstring 'insert-text [values]' %{
-  evaluate-commands -save-regs '"' %{
-    set-register dquote %arg{@}
-    execute-keys '<a-P>'
-  }
+  execute-keys 'iX<esc>h'
+  replace-text %arg{@}
 }
 
 define-command -override replace-text -params .. -docstring 'replace-text [values]' %{
