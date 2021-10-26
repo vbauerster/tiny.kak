@@ -67,21 +67,6 @@ define-command -override reverse-selections -docstring 'reverse selections' %{
   connect run kcr pipe jq reverse
 }
 
-declare-option -hidden str-list palette
-
-define-command -override show-palette -docstring 'show palette' %{
-  evaluate-commands -draft %{
-    # Select the viewport
-    execute-keys 'gtGb'
-    # Select colors
-    execute-keys '2s(#|rgb:)([0-9A-Fa-f]{6})<ret>'
-    set-option window palette %reg{.}
-  }
-  info -anchor "%val{cursor_line}.%val{cursor_column}" -markup %sh{
-    printf '{rgb:%s}██████{default}\n' $kak_opt_palette
-  }
-}
-
 define-command -override make-directory-on-save -docstring 'make directory on save' %{
   remove-hooks global make-directory-on-save
   hook -group make-directory-on-save global BufWritePre '.*' %{

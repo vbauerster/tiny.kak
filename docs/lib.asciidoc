@@ -61,12 +61,6 @@ replace leading tabs with the appropriate indent and align everything with the c
 
 == reverse-selections
 
-== show-palette
-
---------------------------------------------------------------------------------
-map -docstring 'show palette' global view p '<esc>: show-palette<ret>'
---------------------------------------------------------------------------------
-
 == make-directory-on-save
 
 --------------------------------------------------------------------------------
