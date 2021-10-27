@@ -62,15 +62,7 @@ define-command -override indent-selections -docstring 'indent selections' %{
 define-command -override make-directory-on-save -docstring 'make directory on save' %{
   remove-hooks global make-directory-on-save
   hook -group make-directory-on-save global BufWritePre '.*' %{
-    nop %sh{
-      # The full path of the file does not work with scratch buffers,
-      # hence using `dirname`.
-      # buffer_directory_path=${kak_buffile%/*}
-      buffer_directory_path=$(dirname "$kak_buffile")
-      if [ ! -d "$buffer_directory_path" ]; then
-        mkdir -p "$buffer_directory_path"
-      fi
-    }
+    nop %sh(mkdir -p "$(dirname "$kak_buffile")")
   }
 }
 
