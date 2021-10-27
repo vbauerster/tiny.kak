@@ -1,16 +1,16 @@
-# lib.kak
+# tiny.kak
 
 ###### [Documentation] | [Source]
 
-[Source]: rc/lib.kak
-[Documentation]: docs/lib.asciidoc
+[Source]: rc/tiny.kak
+[Documentation]: docs/tiny.asciidoc
 
-Library for [Kakoune].
+A set of commands you likely want in your [kakrc][Kakoune].
 
 [Kakoune]: https://kakoune.org
 
 ## Installation
 
 ``` sh
-git clone https://github.com/alexherbo2/lib.kak ~/.config/kak/autoload/lib
+git clone https://github.com/alexherbo2/tiny.kak ~/.config/kak/autoload/tiny
 ```
