@@ -38,7 +38,7 @@ define-command -override synchronize-terminal-clipboard -docstring 'synchronize 
   hook -group synchronize-terminal-clipboard global RegisterModified '"' %{
     nop %sh{
       encoded_selection_data=$(printf '%s' "$kak_main_reg_dquote" | base64)
-      printf '\033]52;c;%s\a' "$encoded_selection_data" > /dev/tty
+      printf '\e]52;c;%s\a' "$encoded_selection_data" > /dev/tty
     }
   }
 }
