@@ -24,7 +24,7 @@ define-command -override source-runtime -menu -params 1 -shell-script-candidates
 }
 
 define-command -override mkdir -docstring 'make directory for the current buffer' %{
-  nop %sh(mkdir -p "$(dirname "$kak_buffile")")
+  nop %sh(mkdir -p -- "$(dirname -- "$kak_buffile")")
 }
 
 # Ensure the buffer directory exists when saving.
