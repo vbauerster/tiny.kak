@@ -23,12 +23,14 @@ define-command -override source-runtime -menu -params 1 -shell-script-candidates
   source "%val{runtime}/%arg{1}"
 }
 
+define-command -override mkdir -docstring 'make directory for the current buffer' %{
+  nop %sh(mkdir -p "$(dirname "$kak_buffile")")
+}
+
 # Ensure the buffer directory exists when saving.
 define-command -override make-directory-on-save -docstring 'make directory on save' %{
   remove-hooks global make-directory-on-save
-  hook -group make-directory-on-save global BufWritePre '.*' %{
-    nop %sh(mkdir -p "$(dirname "$kak_buffile")")
-  }
+  hook -group make-directory-on-save global BufWritePre '.*' mkdir
 }
 
 # Synchronize the terminal clipboard when copying.
